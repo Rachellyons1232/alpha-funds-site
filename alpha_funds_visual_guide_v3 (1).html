@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Funds — Colors &amp; Typography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Saira:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* SURFACES */
+    --deep-space:  #0A1420;
+    --graphite:    #121D2E;
+    --surface:     #1A2738;
+    --orbit-deep:  #1B3A5C;
+
+    /* ACCENT 01 — BLUE (instrument panel) */
+    --signal:      #3D7DD8;
+    --altitude:    #6FA3E6;
+    --signal-dim:  rgba(61, 125, 216, 0.12);
+
+    /* ACCENT 02 — COPPER (engine glow) */
+    --ignition:    #C08B3F;
+    --ignition-hi: #D4A05A;
+    --ignition-dim:rgba(192, 139, 63, 0.1);
+
+    /* LIGHT + NEUTRAL */
+    --stellar:     #F5F1E8;
+    --steel:       #8A96A5;
+    --horizon:     #5E6B7A;
+
+    --s-95: rgba(245,241,232,0.95);
+    --s-80: rgba(245,241,232,0.8);
+    --s-65: rgba(245,241,232,0.65);
+    --s-45: rgba(245,241,232,0.45);
+    --s-25: rgba(245,241,232,0.25);
+    --s-12: rgba(245,241,232,0.12);
+    --s-06: rgba(245,241,232,0.06);
+
+    --f-display: 'Chakra Petch', sans-serif;
+    --f-body:    'IBM Plex Sans', sans-serif;
+    --f-mono:    'IBM Plex Mono', monospace;
+    --f-mark:    'Saira', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep-space);
+    color: var(--stellar);
+    font-family: var(--f-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+  }
+
+  .mono-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--signal);
+    display: inline-block;
+  }
+
+  /* ═══════════════════════════════════════════════════ */
+  /* COVER                                                 */
+  /* ═══════════════════════════════════════════════════ */
+  .cover {
+    min-height: 100vh;
+    position: relative;
+    padding: 40px 60px 80px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-bottom: 1px solid var(--s-12);
+  }
+
+  .cover::before {
+    content: "";
+    position: absolute;
+    top: -30%; left: -10%;
+    width: 70vw; height: 70vw;
+    max-width: 900px; max-height: 900px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+      rgba(61, 125, 216, 0.18) 0%,
+      rgba(27, 58, 92, 0.1) 35%,
+      transparent 65%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: "";
+    position: absolute;
+    bottom: -20%; right: -15%;
+    width: 55vw; height: 55vw;
+    max-width: 700px; max-height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+      rgba(192, 139, 63, 0.14) 0%,
+      rgba(192, 139, 63, 0.04) 40%,
+      transparent 65%);
+    filter: blur(50px);
+    pointer-events: none;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .wordmark {
+    font-family: var(--f-mark);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.4em;
+    color: var(--stellar);
+  }
+
+  .cover-meta-block {
+    text-align: right;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--horizon);
+    line-height: 1.9;
+  }
+  .cover-meta-block strong { color: var(--signal); font-weight: 400; }
+
+  .cover-main {
+    margin-top: auto;
+    padding-top: clamp(60px, 10vh, 120px);
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+  }
+
+  .cover-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .cover-eyebrow .rule {
+    width: 80px;
+    height: 1px;
+    background: var(--signal);
+    opacity: 0.5;
+  }
+
+  /* TITLE — now entirely in Stellar. The color lives around it. */
+  .cover-title {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: clamp(60px, 10vw, 136px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--stellar);
+    margin-bottom: 48px;
+  }
+  .cover-title .amp {
+    font-weight: 300;
+    color: var(--s-65);
+  }
+
+  .cover-lede {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(19px, 1.9vw, 24px);
+    line-height: 1.45;
+    color: var(--s-80);
+    max-width: 56ch;
+    margin-bottom: 60px;
+  }
+
+  .cover-bottom {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 30px 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--s-12);
+    max-width: 920px;
+    position: relative;
+    z-index: 2;
+  }
+  .cover-bottom > div { position: relative; }
+  .cover-bottom > div::before {
+    content: "";
+    position: absolute;
+    top: -31px; left: 0;
+    width: 28px; height: 1px;
+    background: var(--signal);
+  }
+  .cover-bottom .label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--horizon);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .cover-bottom .val {
+    font-family: var(--f-display);
+    font-size: 16px;
+    color: var(--stellar);
+  }
+
+  .coord {
+    position: absolute;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    color: var(--horizon);
+    z-index: 2;
+  }
+  .coord-tl { top: 20px; left: 60px; }
+  .coord-tr { top: 20px; right: 60px; }
+
+  /* ═══════════════════════════════════════════════════ */
+  /* SECTION SCAFFOLDING                                   */
+  /* ═══════════════════════════════════════════════════ */
+  .section {
+    padding: clamp(80px, 10vw, 130px) 60px;
+    border-bottom: 1px solid var(--s-12);
+    position: relative;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+    max-width: 1400px;
+  }
+
+  .section-num {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--signal);
+    padding-top: 12px;
+    border-top: 1px solid var(--signal);
+    line-height: 1.5;
+  }
+  .section-num strong { color: var(--signal); font-weight: 400; }
+  .section-num small {
+    display: block;
+    color: var(--horizon);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    margin-top: 6px;
+  }
+
+  /* Section titles — clean by default. Emphasis is an exception. */
+  .section-title {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: clamp(28px, 3.6vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--stellar);
+    margin-bottom: 20px;
+    max-width: 24ch;
+  }
+  .section-title em {
+    font-style: normal;
+    color: var(--ignition);
+    font-weight: 400;
+  }
+
+  .section-desc {
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--s-65);
+    line-height: 1.65;
+    max-width: 62ch;
+  }
+
+  .max-wrap { max-width: 1400px; }
+
+  /* ═══════════════════════════════════════════════════ */
+  /* MANIFESTO                                             */
+  /* ═══════════════════════════════════════════════════ */
+  .manifesto {
+    background: var(--graphite);
+    border-top: 1px solid var(--s-12);
+    border-bottom: 1px solid var(--s-12);
+    position: relative;
+  }
+
+  .duet {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 50px;
+    margin-top: 30px;
+    align-items: stretch;
+  }
+
+  .duet-col {
+    padding: 40px 36px;
+    background: rgba(10, 20, 32, 0.5);
+    border: 1px solid var(--s-12);
+    position: relative;
+  }
+
+  .duet-col.blue { border-top: 2px solid var(--signal); }
+  .duet-col.copper { border-top: 2px solid var(--ignition); }
+
+  .duet-col .role {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .duet-col.blue .role { color: var(--signal); }
+  .duet-col.copper .role { color: var(--ignition); }
+
+  .duet-col h3 {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.15;
+    color: var(--stellar);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+
+  .duet-col p {
+    font-size: 14px;
+    color: var(--s-65);
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+
+  .duet-col ul {
+    list-style: none;
+    padding-top: 16px;
+    border-top: 1px solid var(--s-12);
+  }
+  .duet-col li {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 0;
+    color: var(--s-65);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .duet-col li::before {
+    content: "";
+    width: 14px;
+    height: 1px;
+    flex-shrink: 0;
+  }
+  .duet-col.blue li::before { background: var(--signal); }
+  .duet-col.copper li::before { background: var(--ignition); }
+
+  .duet-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .duet-divider .mark {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--horizon);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 20px 0;
+    position: relative;
+  }
+  .duet-divider .mark::before,
+  .duet-divider .mark::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    height: 50px;
+    background: var(--s-12);
+    transform: translateX(-50%);
+  }
+  .duet-divider .mark::before { top: -50px; }
+  .duet-divider .mark::after { bottom: -50px; }
+
+  @media (max-width: 900px) {
+    .duet { grid-template-columns: 1fr; gap: 20px; }
+    .duet-divider { display: none; }
+  }
+
+  /* ═══════════════════════════════════════════════════ */
+  /* PALETTE                                               */
+  /* ═══════════════════════════════════════════════════ */
+  .tier-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--signal);
+    max-width: 300px;
+    line-height: 1.7;
+  }
+  .tier-label small {
+    display: block;
+    color: var(--horizon);
+    letter-spacing: 0.16em;
+    font-size: 10px;
+    margin-top: 4px;
+  }
+
+  .surfaces-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 50px;
+  }
+  @media (max-width: 900px) { .surfaces-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .surface-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--s-12);
+    background: var(--s-06);
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .surface-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--signal);
+  }
+  .surface-swatch {
+    height: 130px;
+    border-bottom: 1px solid var(--s-06);
+  }
+  .surface-info { padding: 16px 18px; }
+  .surface-name {
+    font-family: var(--f-display);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--s-95);
+    margin-bottom: 4px;
+  }
+  .surface-hex {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--s-45);
+  }
+  .surface-use {
+    font-size: 11.5px;
+    color: var(--s-45);
+    line-height: 1.5;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--s-12);
+  }
+
+  .accents-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+  @media (max-width: 880px) { .accents-row { grid-template-columns: 1fr; } }
+
+  .accent-card {
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .accent-card.signal {
+    background:
+      radial-gradient(circle at 80% 20%, rgba(111, 163, 230, 0.25) 0%, transparent 60%),
+      linear-gradient(135deg, #2E6ACC 0%, #3D7DD8 50%, #1B3A5C 100%);
+  }
+  .accent-card.ignition {
+    background:
+      radial-gradient(circle at 20% 80%, rgba(212, 160, 90, 0.3) 0%, transparent 60%),
+      linear-gradient(135deg, #A07230 0%, #C08B3F 50%, #D4A05A 100%);
+  }
+
+  .accent-card .accent-role {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 24px;
+  }
+  .accent-card.signal .accent-role { color: var(--stellar); }
+  .accent-card.ignition .accent-role { color: var(--deep-space); }
+
+  .accent-card h3 {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .accent-card.signal h3 { color: var(--stellar); }
+  .accent-card.ignition h3 { color: var(--deep-space); }
+
+  .accent-card .accent-tag {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.3;
+    margin-bottom: 40px;
+  }
+  .accent-card.signal .accent-tag { color: var(--s-80); }
+  .accent-card.ignition .accent-tag { color: rgba(10, 20, 32, 0.7); }
+
+  .accent-codes {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid currentColor;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+  .accent-card.signal .accent-codes { color: var(--stellar); border-color: rgba(245, 241, 232, 0.25); }
+  .accent-card.ignition .accent-codes { color: var(--deep-space); border-color: rgba(10, 20, 32, 0.2); }
+
+  .accent-codes span { display: block; opacity: 0.7; font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2px; }
+
+  .accent-card .badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-family: var(--f-display);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid currentColor;
+    border-radius: 20px;
+  }
+  .accent-card.signal .badge { color: var(--stellar); border-color: rgba(245,241,232,0.4); }
+  .accent-card.ignition .badge { color: var(--deep-space); border-color: rgba(10,20,32,0.3); }
+
+  .neutrals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 50px;
+  }
+  @media (max-width: 900px) { .neutrals-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .neutrals-grid .surface-swatch { height: 100px; }
+
+  .distribution {
+    background: var(--s-06);
+    border: 1px solid var(--s-12);
+    border-radius: 12px;
+    padding: 32px;
+  }
+  .distribution-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .distribution-head h4 {
+    font-family: var(--f-display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--stellar);
+  }
+  .distribution-head .meta {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--horizon);
+  }
+
+  .ratio-bar {
+    display: flex;
+    height: 52px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .ratio-bar > div {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .r-deepspace { flex: 58; background: var(--deep-space); color: var(--stellar); border: 1px solid var(--s-12); }
+  .r-orbit     { flex: 18; background: var(--orbit-deep); color: var(--stellar); }
+  .r-stellar   { flex: 12; background: var(--stellar); color: var(--deep-space); }
+  .r-signal    { flex: 7;  background: var(--signal); color: var(--stellar); }
+  .r-ignition  { flex: 5;  background: var(--ignition); color: var(--deep-space); }
+
+  .ratio-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--s-12);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--s-65);
+  }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+  /* ═══════════════════════════════════════════════════ */
+  /* SPECIMENS                                             */
+  /* ═══════════════════════════════════════════════════ */
+  .specimen {
+    background: var(--s-06);
+    border: 1px solid var(--s-12);
+    border-radius: 12px;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .specimen:hover { border-color: var(--s-25); }
+
+  .specimen-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--s-12);
+  }
+  .specimen-title {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--stellar);
+  }
+  .specimen-title small {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--signal);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .specimen-role {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--horizon);
+  }
+
+  /* Chakra specimen — one hero line, one copper word, one secondary in neutral */
+  .chakra-hero {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: clamp(44px, 7vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--stellar);
+    margin-bottom: 36px;
+  }
+  .chakra-hero em { font-style: normal; color: var(--ignition); font-weight: 300; }
+
+  .chakra-secondary {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.25;
+    color: var(--s-65);
+    max-width: 32ch;
+    margin-bottom: 40px;
+    padding-left: 18px;
+    border-left: 1px solid var(--s-25);
+  }
+
+  .weight-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    padding-top: 28px;
+    border-top: 1px solid var(--s-12);
+  }
+  @media (max-width: 780px) { .weight-row { grid-template-columns: repeat(2, 1fr); } }
+
+  .weight-item .wt-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--signal);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--s-12);
+  }
+  .weight-item .wt-sample {
+    font-family: var(--f-display);
+    font-size: 26px;
+    line-height: 1;
+    color: var(--s-80);
+  }
+
+  /* Plex specimen — single highlight per paragraph */
+  .plex-lede {
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    color: var(--stellar);
+    margin-bottom: 28px;
+    max-width: 34ch;
+  }
+  .plex-body {
+    font-family: var(--f-body);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--s-80);
+    max-width: 62ch;
+    margin-bottom: 24px;
+  }
+  .plex-body .cop-word { color: var(--ignition); font-weight: 500; }
+
+  .plex-small {
+    font-family: var(--f-body);
+    font-weight: 400;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--s-45);
+    max-width: 62ch;
+    margin-bottom: 40px;
+  }
+  .plex-small .sig-word { color: var(--signal); font-weight: 500; }
+
+  .plex-weight-row .wt-sample {
+    font-family: var(--f-body);
+    font-size: 19px;
+    color: var(--s-80);
+  }
+  .plex-weight-row .w300 { font-weight: 300; }
+  .plex-weight-row .w400 { font-weight: 400; }
+  .plex-weight-row .w500 { font-weight: 500; }
+  .plex-weight-row .w600 { font-weight: 600; }
+  .plex-weight-row .w700 { font-weight: 700; }
+
+  /* Mono specimen — single accent zone (blue) */
+  .mono-hero {
+    font-family: var(--f-mono);
+    font-weight: 400;
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stellar);
+    margin-bottom: 28px;
+    line-height: 1.3;
+  }
+  .mono-hero .blue { color: var(--signal); }
+
+  .mono-meta-block {
+    font-family: var(--f-mono);
+    font-size: 14px;
+    line-height: 2;
+    color: var(--s-80);
+    padding: 24px 28px;
+    background: rgba(10, 20, 32, 0.5);
+    border-left: 2px solid var(--signal);
+    margin-bottom: 40px;
+    border-radius: 0 6px 6px 0;
+  }
+  .mono-meta-block .key { color: var(--signal); }
+  .mono-meta-block .sep { color: var(--horizon); }
+  .mono-meta-block .val { color: var(--stellar); }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 28px;
+    border-top: 1px solid var(--s-12);
+  }
+  .chip {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border: 1px solid var(--s-12);
+    border-radius: 4px;
+    color: var(--s-80);
+    transition: all 0.2s;
+  }
+  .chip:hover { border-color: var(--signal); color: var(--signal); }
+  .chip.blue { border-color: var(--signal); color: var(--signal); background: var(--signal-dim); }
+
+  /* Saira specimen */
+  .saira-frame {
+    padding: 60px 40px;
+    text-align: center;
+    background: rgba(10, 20, 32, 0.5);
+    border-radius: 8px;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .saira-frame::before,
+  .saira-frame::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 40px;
+    height: 1px;
+    background: var(--signal);
+    transform: translateX(-50%);
+    opacity: 0.6;
+  }
+  .saira-frame::before { top: 20px; }
+  .saira-frame::after { bottom: 20px; }
+
+  .saira-mark {
+    font-family: var(--f-mark);
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--stellar);
+    display: block;
+    margin-bottom: 16px;
+  }
+  .s-lg { font-size: clamp(40px, 6vw, 68px); }
+  .s-md { font-size: 32px; letter-spacing: 0.42em; }
+  .s-sm { font-size: 15px; letter-spacing: 0.46em; }
+
+  .saira-cap {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--horizon);
+  }
+
+  /* Hierarchy card — single blue stripe at top */
+  .hierarchy-wrap {
+    background: var(--graphite);
+    border: 1px solid var(--s-12);
+    border-radius: 12px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hierarchy-wrap::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--signal);
+  }
+
+  .hier-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--s-12);
+    align-items: baseline;
+  }
+  .hier-row:first-child { padding-top: 0; }
+  .hier-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .hier-meta {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--horizon);
+    line-height: 1.65;
+  }
+  .hier-meta strong {
+    display: block;
+    color: var(--signal);
+    font-weight: 400;
+    margin-bottom: 2px;
+  }
+
+  .h-display { font-family: var(--f-display); font-weight: 600; font-size: clamp(38px, 5vw, 58px); line-height: 0.95; letter-spacing: -0.02em; color: var(--stellar); }
+  .h-display em { font-style: normal; color: var(--ignition); font-weight: 300; }
+  .h-h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.05; color: var(--stellar); }
+  .h-h2 { font-family: var(--f-display); font-weight: 500; font-size: 26px; line-height: 1.1; color: var(--stellar); }
+  .h-lede { font-family: var(--f-body); font-weight: 300; font-size: 20px; line-height: 1.45; color: var(--stellar); max-width: 48ch; }
+  .h-body { font-family: var(--f-body); font-weight: 400; font-size: 15.5px; line-height: 1.65; color: var(--s-80); max-width: 62ch; }
+  .h-body .sig { color: var(--signal); font-weight: 500; }
+  .h-small { font-family: var(--f-body); font-weight: 400; font-size: 12.5px; line-height: 1.55; color: var(--s-45); }
+  .h-label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--signal); }
+
+  @media (max-width: 780px) {
+    .hier-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 0; }
+  }
+
+  /* ═══════════════════════════════════════════════════ */
+  /* APPLICATIONS                                          */
+  /* ═══════════════════════════════════════════════════ */
+  .pairings-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+  }
+  .pairings-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  @media (max-width: 900px) {
+    .pairings-grid, .pairings-grid-2 { grid-template-columns: 1fr; }
+  }
+
+  .app {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    min-height: 340px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--s-12);
+  }
+  .app-tag {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--horizon);
+    z-index: 5;
+  }
+
+  .app-hero {
+    background:
+      radial-gradient(circle at 85% 15%, rgba(192, 139, 63, 0.12) 0%, transparent 55%),
+      radial-gradient(circle at 15% 80%, rgba(61, 125, 216, 0.12) 0%, transparent 55%),
+      var(--deep-space);
+  }
+  .app-hero .meta {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 28px;
+  }
+  .app-hero .hm {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    color: var(--stellar);
+    margin-bottom: 16px;
+    max-width: 14ch;
+  }
+  .app-hero .hm em { font-style: normal; color: var(--ignition); font-weight: 300; }
+  .app-hero .sub {
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--s-65);
+    max-width: 44ch;
+    margin-bottom: 32px;
+  }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .cta {
+    display: inline-block;
+    padding: 13px 24px;
+    font-family: var(--f-body);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .cta-primary {
+    background: var(--ignition);
+    color: var(--deep-space);
+    border: 1px solid var(--ignition);
+  }
+  .cta-primary:hover { background: var(--ignition-hi); border-color: var(--ignition-hi); }
+  .cta-secondary {
+    background: transparent;
+    color: var(--stellar);
+    border: 1px solid var(--s-25);
+  }
+  .cta-secondary:hover { border-color: var(--signal); color: var(--signal); }
+
+  .app-li {
+    background: var(--stellar);
+    color: var(--deep-space);
+  }
+  .app-li .app-tag { color: var(--horizon); }
+  .app-li .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 20px;
+  }
+  .app-li .head {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.15;
+    color: var(--deep-space);
+    margin-bottom: 16px;
+  }
+  .app-li .head em { font-style: normal; color: var(--ignition); font-weight: 400; }
+  .app-li .body {
+    font-family: var(--f-body);
+    font-size: 14px;
+    line-height: 1.55;
+    color: #2a3340;
+  }
+  .app-li .foot {
+    border-top: 1px solid rgba(10, 20, 32, 0.12);
+    padding-top: 14px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--horizon);
+  }
+
+  .app-stat {
+    background: var(--deep-space);
+    border: 1px solid var(--signal);
+    padding: 40px 32px;
+  }
+  .app-stat .stat-label {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 18px;
+  }
+  .app-stat .stat-num {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(64px, 8vw, 96px);
+    line-height: 0.9;
+    color: var(--ignition);
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+  }
+  .app-stat .stat-num sup {
+    font-size: 0.45em;
+    font-weight: 500;
+    vertical-align: 0.7em;
+    margin-left: 4px;
+  }
+  .app-stat .stat-body {
+    font-family: var(--f-body);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--s-80);
+    margin-bottom: 16px;
+  }
+  .app-stat .source {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--horizon);
+  }
+
+  .app-portfolio {
+    background: var(--orbit-deep);
+    padding: 36px 32px;
+  }
+  .app-portfolio .label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--altitude);
+    margin-bottom: 24px;
+  }
+  .app-portfolio .head {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.15;
+    color: var(--stellar);
+    margin-bottom: 14px;
+  }
+  .app-portfolio .body {
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--s-80);
+    margin-bottom: 20px;
+  }
+  .app-portfolio .foot {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--altitude);
+    border-top: 1px solid rgba(245,241,232,0.15);
+    padding-top: 14px;
+  }
+
+  .app-quote {
+    background: var(--stellar);
+    color: var(--deep-space);
+    padding: 36px 32px;
+  }
+  .app-quote .mark {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: 60px;
+    line-height: 1;
+    color: var(--ignition);
+    margin-bottom: 8px;
+  }
+  .app-quote .text {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--deep-space);
+    margin-bottom: 20px;
+  }
+  .app-quote .attr {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--horizon);
+  }
+
+  /* ═══════════════════════════════════════════════════ */
+  /* VOICE                                                 */
+  /* ═══════════════════════════════════════════════════ */
+  .voice {
+    background: var(--graphite);
+    padding: clamp(100px, 14vw, 180px) 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .voice::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 80vw;
+    height: 80vw;
+    max-width: 900px;
+    max-height: 900px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+      rgba(192, 139, 63, 0.1) 0%,
+      rgba(61, 125, 216, 0.06) 40%,
+      transparent 65%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    filter: blur(40px);
+  }
+  .voice-inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+  .voice .meta {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+  .voice .meta::before,
+  .voice .meta::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: var(--signal);
+    opacity: 0.4;
+  }
+  .voice-pull {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--stellar);
+    margin-bottom: 32px;
+  }
+  .voice-pull em { font-style: normal; color: var(--ignition); }
+  .voice-attr {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--horizon);
+  }
+
+  /* ═══════════════════════════════════════════════════ */
+  /* FOOTER                                                */
+  /* ═══════════════════════════════════════════════════ */
+  footer {
+    padding: 60px 60px 40px;
+    border-top: 1px solid var(--s-12);
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+  @media (max-width: 780px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 30px; } }
+
+  .foot-grid h4 {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 14px;
+  }
+  .foot-grid p, .foot-grid li {
+    font-family: var(--f-body);
+    font-size: 13px;
+    color: var(--s-65);
+    line-height: 1.7;
+    list-style: none;
+  }
+  .foot-grid p strong { color: var(--stellar); font-weight: 500; }
+
+  .foot-bottom {
+    padding-top: 30px;
+    border-top: 1px solid var(--s-12);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--horizon);
+  }
+  .foot-mark {
+    font-family: var(--f-mark);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--stellar);
+  }
+
+  @media (max-width: 900px) {
+    .cover { padding: 30px 30px 60px; }
+    .section { padding: 70px 30px; }
+    .section-head { grid-template-columns: 1fr; gap: 20px; }
+    .specimen { padding: 32px 24px; }
+    .coord-tl, .coord-tr { display: none; }
+    footer { padding: 50px 30px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- COVER                                                 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="cover">
+  <span class="coord coord-tl">48.5°N · 2.5°E</span>
+  <span class="coord coord-tr">V.03 · 2026.04</span>
+
+  <div class="cover-top">
+    <span class="wordmark">ALPHA FUNDS</span>
+    <div class="cover-meta-block">
+      <div><strong>Document</strong> Visual Identity</div>
+      <div>Colors &amp; Typography</div>
+      <div>Working Draft · V.03</div>
+    </div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-eyebrow">
+      <span class="rule"></span>
+      <span class="mono-label">// Visual Identity · Foundations</span>
+    </div>
+    <h1 class="cover-title">
+      Color <span class="amp">&amp;</span><br>
+      typography.
+    </h1>
+    <p class="cover-lede">The foundations of the Alpha Funds visual system. Two accent colors, four typefaces, one set of rules for how they come together.</p>
+
+    <div class="cover-bottom">
+      <div>
+        <span class="label">Prepared For</span>
+        <span class="val">Alpha Funds</span>
+      </div>
+      <div>
+        <span class="label">Prepared By</span>
+        <span class="val">Rachel Lyons</span>
+      </div>
+      <div>
+        <span class="label">Accents</span>
+        <span class="val">Signal · Ignition</span>
+      </div>
+      <div>
+        <span class="label">Typefaces</span>
+        <span class="val">Four</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- MANIFESTO                                             -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="manifesto section">
+  <div class="max-wrap">
+    <div class="section-head">
+      <div class="section-num">
+        <strong>00 — System</strong>
+        <small>Two accents · Two jobs</small>
+      </div>
+      <div>
+        <h2 class="section-title">Two accents. <em>Two jobs.</em> One system.</h2>
+        <p class="section-desc">Most brands pick one accent and stretch it. Alpha Funds uses two — one cool, one warm — because the brand has two distinct registers to express: the precise, technical, inside-the-sector knowledge of the team, and the warm, human, founder-first voice of J.D. Each accent has one clear job. They appear across the same page constantly, but never in the same headline or sentence.</p>
+      </div>
+    </div>
+
+    <div class="duet">
+      <div class="duet-col blue">
+        <span class="role">// Accent 01 · Signal Blue</span>
+        <h3>The instrument panel.</h3>
+        <p>Precision, navigation, data. Signal Blue is the technical register — the cockpit readouts, the mission coordinates, the interactive states. It's where the firm's engineering and financial discipline show up visually.</p>
+        <ul>
+          <li>Section labels &amp; numbering</li>
+          <li>Links &amp; hover states</li>
+          <li>Data callouts &amp; metrics</li>
+          <li>Technical metadata</li>
+          <li>Field labels &amp; form focus</li>
+        </ul>
+      </div>
+
+      <div class="duet-divider">
+        <span class="mark">SYSTEM</span>
+      </div>
+
+      <div class="duet-col copper">
+        <span class="role">// Accent 02 · Ignition</span>
+        <h3>The engine glow.</h3>
+        <p>Warmth, personality, emphasis. Ignition is the editorial register — the word in the headline that matters, the CTA that invites, the accent that keeps the brand from reading cold. It's where J.D.'s voice shows up visually.</p>
+        <ul>
+          <li>Single-word headline emphasis</li>
+          <li>Primary CTAs &amp; invitations</li>
+          <li>Editorial pull-quotes</li>
+          <li>Section rules &amp; ornaments</li>
+          <li>Portfolio signal moments</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PALETTE                                               -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="max-wrap">
+    <div class="section-head">
+      <div class="section-num">
+        <strong>01 — Palette</strong>
+        <small>Nine colors · Three tiers</small>
+      </div>
+      <div>
+        <h2 class="section-title">The full palette, tiered by role.</h2>
+        <p class="section-desc">Nine colors organized in three tiers — surfaces, accents, and supporting neutrals. Dark is the default canvas. The two accents carry the brand. The neutrals do the quiet work of making everything readable.</p>
+      </div>
+    </div>
+
+    <div class="tier-label">
+      Tier 01 — Surfaces
+      <small>// The dark canvas</small>
+    </div>
+
+    <div class="surfaces-grid">
+      <div class="surface-card">
+        <div class="surface-swatch" style="background: #0A1420;"></div>
+        <div class="surface-info">
+          <div class="surface-name">Deep Space</div>
+          <div class="surface-hex">#0A1420 · RGB 10/20/32</div>
+          <div class="surface-use">Primary background. The default canvas.</div>
+        </div>
+      </div>
+      <div class="surface-card">
+        <div class="surface-swatch" style="background: #121D2E;"></div>
+        <div class="surface-info">
+          <div class="surface-name">Graphite</div>
+          <div class="surface-hex">#121D2E · RGB 18/29/46</div>
+          <div class="surface-use">Section backgrounds, one step up from Deep Space.</div>
+        </div>
+      </div>
+      <div class="surface-card">
+        <div class="surface-swatch" style="background: #1A2738;"></div>
+        <div class="surface-info">
+          <div class="surface-name">Surface</div>
+          <div class="surface-hex">#1A2738 · RGB 26/39/56</div>
+          <div class="surface-use">Elevated cards, inputs, panels.</div>
+        </div>
+      </div>
+      <div class="surface-card">
+        <div class="surface-swatch" style="background: #1B3A5C;"></div>
+        <div class="surface-info">
+          <div class="surface-name">Orbit Deep</div>
+          <div class="surface-hex">#1B3A5C · RGB 27/58/92</div>
+          <div class="surface-use">Earth-from-above blue. Feature sections.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-label" style="border-top-color: var(--ignition); color: var(--ignition);">
+      Tier 02 — Signature Accents
+      <small style="color: var(--horizon);">// The two that carry the brand</small>
+    </div>
+
+    <div class="accents-row">
+      <div class="accent-card signal">
+        <span class="badge">01 / Blue</span>
+        <div class="accent-role">// Accent · Instrument Panel</div>
+        <h3>Signal Blue</h3>
+        <div class="accent-tag">The cool register. Labels, links, data, precision.</div>
+        <div class="accent-codes">
+          <div>
+            <span>Primary</span>
+            #3D7DD8 · RGB 61/125/216
+          </div>
+          <div>
+            <span>Altitude</span>
+            #6FA3E6
+          </div>
+        </div>
+      </div>
+
+      <div class="accent-card ignition">
+        <span class="badge">02 / Copper</span>
+        <div class="accent-role">// Accent · Engine Glow</div>
+        <h3>Ignition</h3>
+        <div class="accent-tag">The warm register. Emphasis, CTAs, editorial moments.</div>
+        <div class="accent-codes">
+          <div>
+            <span>Primary</span>
+            #C08B3F · RGB 192/139/63
+          </div>
+          <div>
+            <span>Highlight</span>
+            #D4A05A
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-label">
+      Tier 03 — Supporting Neutrals
+      <small>// Type, metadata, quiet work</small>
+    </div>
+
+    <div class="neutrals-grid">
+      <div class="surface-card">
+        <div class="surface-swatch" style="background: #F5F1E8;"></div>
+        <div class="surface-info">
+          <div class="surface-name">Stellar</div>
+          <div class="surface-hex">#F5F1E8</div>
+          <div class="surface-use">Warm off-white. Headlines &amp; primary text on dark.</div>
+        </div>
+      </div>
+      <div class="surface-card">
+        <div class="surface-swatch" style="background: #8A96A5;"></div>
+        <div class="surface-info">
+          <div class="surface-name">Steel</div>
+          <div class="surface-hex">#8A96A5</div>
+          <div class="surface-use">Secondary text. Body copy on dark.</div>
+        </div>
+      </div>
+      <div class="surface-card">
+        <div class="surface-swatch" style="background: #5E6B7A;"></div>
+        <div class="surface-info">
+          <div class="surface-name">Horizon</div>
+          <div class="surface-hex">#5E6B7A</div>
+          <div class="surface-use">Metadata, captions, small type, dividers.</div>
+        </div>
+      </div>
+      <div class="surface-card">
+        <div class="surface-swatch" style="background: linear-gradient(135deg, #3D7DD8 0%, #C08B3F 100%);"></div>
+        <div class="surface-info">
+          <div class="surface-name">Dual System</div>
+          <div class="surface-hex">Signal + Ignition</div>
+          <div class="surface-use">Never as gradient. As semantic pair.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="distribution">
+      <div class="distribution-head">
+        <h4>Recommended Distribution</h4>
+        <span class="meta">// Across any surface</span>
+      </div>
+      <div class="ratio-bar">
+        <div class="r-deepspace">Deep Space · 58%</div>
+        <div class="r-orbit">Orbit · 18%</div>
+        <div class="r-stellar">Stellar · 12%</div>
+        <div class="r-signal">Signal · 7%</div>
+        <div class="r-ignition">Ignition · 5%</div>
+      </div>
+      <div class="ratio-legend">
+        <div class="legend-item"><span class="legend-dot" style="background: var(--deep-space); border: 1px solid var(--s-25);"></span>Deep Space — canvas</div>
+        <div class="legend-item"><span class="legend-dot" style="background: var(--orbit-deep);"></span>Orbit — surfaces</div>
+        <div class="legend-item"><span class="legend-dot" style="background: var(--stellar);"></span>Stellar — type</div>
+        <div class="legend-item"><span class="legend-dot" style="background: var(--signal);"></span>Signal — precision</div>
+        <div class="legend-item"><span class="legend-dot" style="background: var(--ignition);"></span>Ignition — warmth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- CHAKRA PETCH                                          -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="max-wrap">
+    <div class="section-head">
+      <div class="section-num">
+        <strong>02 — Display</strong>
+        <small>Chakra Petch · 300–700</small>
+      </div>
+      <div>
+        <h2 class="section-title">Chakra Petch carries the headline voice.</h2>
+        <p class="section-desc">Engineered, geometric, slightly technical — without tipping into sci-fi. It carries the Air Force / Space Force register J.D. pointed to, with enough warmth to stay human. Used for every headline, every hero statement, every display moment.</p>
+      </div>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-head">
+        <div class="specimen-title">
+          <small>// 02A · Display</small>
+          Chakra Petch
+        </div>
+        <div class="specimen-role">Weights 300 — 700 · Letter-spacing -2%</div>
+      </div>
+
+      <div class="chakra-hero">Investing <em>at the edge.</em></div>
+
+      <div class="chakra-secondary">Where the future is built — off Earth, for Earth.</div>
+
+      <div class="weight-row">
+        <div class="weight-item">
+          <span class="wt-label">Light · 300</span>
+          <div class="wt-sample" style="font-weight: 300;">Alpha</div>
+        </div>
+        <div class="weight-item">
+          <span class="wt-label">Regular · 400</span>
+          <div class="wt-sample" style="font-weight: 400;">Alpha</div>
+        </div>
+        <div class="weight-item">
+          <span class="wt-label">Medium · 500</span>
+          <div class="wt-sample" style="font-weight: 500;">Alpha</div>
+        </div>
+        <div class="weight-item">
+          <span class="wt-label">SemiBold · 600</span>
+          <div class="wt-sample" style="font-weight: 600;">Alpha</div>
+        </div>
+        <div class="weight-item">
+          <span class="wt-label">Bold · 700</span>
+          <div class="wt-sample" style="font-weight: 700;">Alpha</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- IBM PLEX SANS                                         -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="max-wrap">
+    <div class="section-head">
+      <div class="section-num">
+        <strong>03 — Body</strong>
+        <small>IBM Plex Sans · 300–700</small>
+      </div>
+      <div>
+        <h2 class="section-title">IBM Plex Sans handles the explanation.</h2>
+        <p class="section-desc">Built by IBM, rooted in American engineering tradition. Clean, open, exceptionally readable. Carries the technical credibility of a firm serving scientists, engineers, and institutional investors — without feeling cold.</p>
+      </div>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-head">
+        <div class="specimen-title">
+          <small>// 03A · Body</small>
+          IBM Plex Sans
+        </div>
+        <div class="specimen-role">Weights 300 — 700 · Optimized for reading</div>
+      </div>
+
+      <div class="plex-lede">Every major industry on Earth has a parallel new industry being built in space right now.</div>
+
+      <div class="plex-body">Alpha Funds takes lead positions in companies, raises around them, and brings the operational support founders need to scale. Members of the team have crossed the <span class="cop-word">Kármán Line</span>, built national military space programs, and worked inside every layer of the space sector for more than a decade.</div>
+
+      <div class="plex-small">The global space economy is projected to reach <span class="sig-word">$1.8 trillion</span> by 2035 according to McKinsey &amp; Company, nearly tripling from its 2023 value of $630 billion. Alpha Funds exists to back the companies driving that growth.</div>
+
+      <div class="weight-row plex-weight-row">
+        <div class="weight-item">
+          <span class="wt-label">Light · 300</span>
+          <div class="wt-sample w300">Aa · 123</div>
+        </div>
+        <div class="weight-item">
+          <span class="wt-label">Regular · 400</span>
+          <div class="wt-sample w400">Aa · 123</div>
+        </div>
+        <div class="weight-item">
+          <span class="wt-label">Medium · 500</span>
+          <div class="wt-sample w500">Aa · 123</div>
+        </div>
+        <div class="weight-item">
+          <span class="wt-label">SemiBold · 600</span>
+          <div class="wt-sample w600">Aa · 123</div>
+        </div>
+        <div class="weight-item">
+          <span class="wt-label">Bold · 700</span>
+          <div class="wt-sample w700">Aa · 123</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- IBM PLEX MONO                                         -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="max-wrap">
+    <div class="section-head">
+      <div class="section-num">
+        <strong>04 — Technical</strong>
+        <small>IBM Plex Mono · Labels</small>
+      </div>
+      <div>
+        <h2 class="section-title">IBM Plex Mono marks the instrument panel.</h2>
+        <p class="section-desc">For labels, section markers, metadata, and anything that should read as engineered or precise. The monospace face is the typographic home of Signal Blue — together they handle every technical and navigational surface.</p>
+      </div>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-head">
+        <div class="specimen-title">
+          <small>// 04A · Technical</small>
+          IBM Plex Mono
+        </div>
+        <div class="specimen-role">Weights 300 — 600 · Always with tracking</div>
+      </div>
+
+      <div class="mono-hero"><span class="blue">//</span> SPACE · DEEP TECH · EARTH</div>
+
+      <div class="mono-meta-block">
+        <span class="key">FUND_ID</span> <span class="sep">=</span> <span class="val">ALPHA_EDGE</span><br>
+        <span class="key">SECTOR</span> <span class="sep">=</span> <span class="val">SPACE, DEEP_TECH, AI</span><br>
+        <span class="key">STAGE</span> <span class="sep">=</span> <span class="val">SEED → SERIES_B</span><br>
+        <span class="key">POSITION</span> <span class="sep">=</span> <span class="val">LEAD</span><br>
+        <span class="key">STATUS</span> <span class="sep">=</span> <span class="val">ACTIVE</span>
+      </div>
+
+      <div class="chips">
+        <span class="chip blue">// Sector Insight</span>
+        <span class="chip">Founder Spotlight</span>
+        <span class="chip">Portfolio Signal</span>
+        <span class="chip">In the Room</span>
+        <span class="chip">Behind the Lens</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SAIRA                                                 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="max-wrap">
+    <div class="section-head">
+      <div class="section-num">
+        <strong>05 — Wordmark</strong>
+        <small>Saira · Lockup only</small>
+      </div>
+      <div>
+        <h2 class="section-title">Saira lives in the wordmark alone.</h2>
+        <p class="section-desc">Tall, condensed, with a military / aerospace feel. Used only for the "ALPHA FUNDS" wordmark — never as a display or body face anywhere else. The letterforms carry the Space Force / Blue Origin aesthetic without mimicking either directly.</p>
+      </div>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-head">
+        <div class="specimen-title">
+          <small>// 05A · Wordmark</small>
+          Saira
+        </div>
+        <div class="specimen-role">700 Bold · Uppercase · Tracking 0.4em+</div>
+      </div>
+
+      <div class="saira-frame">
+        <span class="saira-mark s-lg">ALPHA FUNDS</span>
+        <div class="saira-cap">Primary · Website hero, print, lockup</div>
+      </div>
+      <div class="saira-frame">
+        <span class="saira-mark s-md">ALPHA FUNDS</span>
+        <div class="saira-cap">Secondary · Navigation, document headers</div>
+      </div>
+      <div class="saira-frame" style="padding: 40px;">
+        <span class="saira-mark s-sm">ALPHA FUNDS</span>
+        <div class="saira-cap">Small · Footers, metadata, tight contexts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- HIERARCHY                                             -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="max-wrap">
+    <div class="section-head">
+      <div class="section-num">
+        <strong>06 — Hierarchy</strong>
+        <small>All four faces together</small>
+      </div>
+      <div>
+        <h2 class="section-title">The full system in concert.</h2>
+        <p class="section-desc">Reference hierarchy showing how every typeface and both accents layer in a real editorial layout. Watch the rhythm — blue label sets the stage, Chakra Petch carries the headline with one copper emphasis word, Plex Sans explains, Plex Mono marks. No two pops in the same unit.</p>
+      </div>
+    </div>
+
+    <div class="hierarchy-wrap">
+      <div class="hier-row">
+        <div class="hier-meta"><strong>Label</strong>Plex Mono · 11px · Signal</div>
+        <div class="h-label">// 01 — Sector Insight</div>
+      </div>
+      <div class="hier-row">
+        <div class="hier-meta"><strong>Display</strong>Chakra Petch · 600</div>
+        <div class="h-display">Investing <em>at the edge.</em></div>
+      </div>
+      <div class="hier-row">
+        <div class="hier-meta"><strong>H1</strong>Chakra Petch · 500</div>
+        <div class="h-h1">We support the companies building humanity's future.</div>
+      </div>
+      <div class="hier-row">
+        <div class="hier-meta"><strong>H2</strong>Chakra Petch · 500</div>
+        <div class="h-h2">Every layer of the sector.</div>
+      </div>
+      <div class="hier-row">
+        <div class="hier-meta"><strong>Lede</strong>Plex Sans · 300</div>
+        <div class="h-lede">We know space because we're in every layer of it — from military and civil program development to commercial partnerships to actually crossing the Kármán Line.</div>
+      </div>
+      <div class="hier-row">
+        <div class="hier-meta"><strong>Body</strong>Plex Sans · 400</div>
+        <div class="h-body">The global space economy is projected to reach <span class="sig">$1.8 trillion by 2035</span> according to McKinsey &amp; Company, nearly tripling from its 2023 value of $630 billion.</div>
+      </div>
+      <div class="hier-row">
+        <div class="hier-meta"><strong>Small</strong>Plex Sans · 400</div>
+        <div class="h-small">Alpha Funds Management LLC provides this website for informational purposes only. Nothing on this site constitutes an offer to sell or a solicitation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- APPLICATIONS                                          -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="max-wrap">
+    <div class="section-head">
+      <div class="section-num">
+        <strong>07 — In Use</strong>
+        <small>Real applications</small>
+      </div>
+      <div>
+        <h2 class="section-title">The system, working in the wild.</h2>
+        <p class="section-desc">Four real applications showing how the palette and typography move together. Watch how Signal Blue consistently does the navigational work (labels, metadata) while Ignition earns the warm emphasis moments (one headline word, a CTA, a pull-quote) — each on a separate plane.</p>
+      </div>
+    </div>
+
+    <div class="pairings-grid">
+      <div class="app app-hero">
+        <span class="app-tag">Website · Hero</span>
+        <div>
+          <div class="meta">// Venture Capital · Space &amp; Deep Tech</div>
+          <div class="hm">We invest for Earth's <em>future.</em></div>
+          <div class="sub">A venture capital firm with team members who have crossed the Kármán Line. We back the companies building humanity's future in space and deep tech.</div>
+          <div class="cta-row">
+            <a href="#" class="cta cta-primary">Get in Touch</a>
+            <a href="#" class="cta cta-secondary">See Portfolio</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="app app-li">
+        <span class="app-tag">Social · LinkedIn</span>
+        <div>
+          <div class="eyebrow">// Sector Insight</div>
+          <div class="head">Cancer cells can grow significantly faster in <em>microgravity.</em></div>
+          <div class="body">That's why BioOrbit is building labs in orbit. Research timelines that take years on Earth can compress to months off it.</div>
+        </div>
+        <div class="foot">Portfolio · BioOrbit</div>
+      </div>
+    </div>
+
+    <div class="pairings-grid-2">
+      <div class="app app-stat">
+        <span class="app-tag" style="color: var(--steel);">Data · Callout</span>
+        <div>
+          <div class="stat-label">// Space Economy · 2035</div>
+          <div class="stat-num">$1.8<sup>T</sup></div>
+          <div class="stat-body">Projected size of the global space economy by 2035 — nearly tripling from $630B in 2023.</div>
+          <div class="source">Source · McKinsey &amp; Company</div>
+        </div>
+      </div>
+
+      <div class="app app-portfolio">
+        <span class="app-tag" style="color: var(--altitude);">Portfolio · Tile</span>
+        <div>
+          <div class="label">// Portfolio Signal</div>
+          <div class="head">Sophia Space raises for orbital data centers.</div>
+          <div class="body">Rob DeMillo's team is moving compute off-planet — where cooling is free and the grid is the sun.</div>
+        </div>
+        <div class="foot">Active · Led by Alpha Funds</div>
+      </div>
+
+      <div class="app app-quote">
+        <span class="app-tag">Editorial · Pull</span>
+        <div>
+          <div class="mark">"</div>
+          <div class="text">Great ideas are everywhere. What's rare is the person willing to build the damn thing.</div>
+        </div>
+        <div class="attr">— J.D. Russell · Founder</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- VOICE                                                 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="voice">
+  <div class="voice-inner">
+    <div class="meta">// System · Signature</div>
+    <div class="voice-pull">Space is <em>infinite.</em><br>Earth is not.</div>
+    <div class="voice-attr">Alpha Funds · Brand Philosophy</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- FOOTER                                                -->
+<!-- ═══════════════════════════════════════════════════ -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <h4>About this Document</h4>
+      <p>This visual guide establishes the color and typography foundations for Alpha Funds. It pairs with the Brand Profile &amp; Recommendations as the full identity system. <strong>V.03</strong> refines accent discipline — both colors appear across every page, but never in the same headline or sentence. One accent per typographic unit.</p>
+    </div>
+    <div>
+      <h4>Typefaces</h4>
+      <ul>
+        <li>Chakra Petch</li>
+        <li>IBM Plex Sans</li>
+        <li>IBM Plex Mono</li>
+        <li>Saira</li>
+        <li style="color: var(--horizon); font-size: 11px; margin-top: 6px;">All · Google Fonts</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Accents</h4>
+      <ul>
+        <li>Signal · #3D7DD8</li>
+        <li>Ignition · #C08B3F</li>
+        <li style="color: var(--horizon); font-size: 11px; margin-top: 6px;">Distribution · 7% / 5%</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Next</h4>
+      <ul>
+        <li>Logo vectorization</li>
+        <li>Website build</li>
+        <li>Deck template</li>
+        <li>Social templates</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span class="foot-mark">ALPHA FUNDS</span>
+    <span>V.03 · Colors &amp; Typography</span>
+    <span>// Prepared by Rachel Lyons</span>
+  </div>
+</footer>
+
+</body>
+</html>

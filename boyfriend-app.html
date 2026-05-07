@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Boyfriend Ever</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffd1dc 0%, #ff8fa3 100%);
+      padding: 2rem;
+    }
+    button {
+      padding: 1rem 2.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      background: #e63956;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(230, 57, 86, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(230, 57, 86, 0.45);
+    }
+    button:active { transform: translateY(0); }
+    #message {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #4a0e1f;
+      text-align: center;
+      min-height: 2.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    #message.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <button id="btn">Push me</button>
+  <p id="message"></p>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const message = document.getElementById('message');
+    btn.addEventListener('click', () => {
+      message.textContent = 'I have the best boyfriend ever';
+      message.classList.add('show');
+    });
+  </script>
+</body>
+</html>

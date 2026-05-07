@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video to Scroll Website</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="loader" class="loader-overlay">
+    <div class="loader-brand">Video Frame Experience</div>
+    <div id="loader-bar" class="loader-bar"><span></span></div>
+    <div id="loader-percent" class="loader-percent">0%</div>
+  </div>
+
+  <header class="site-header">
+    <div class="site-logo">FrameFlow</div>
+    <nav class="site-nav">
+      <a href="#story">Story</a>
+      <a href="#motion">Motion</a>
+      <a href="#stats">Stats</a>
+      <a href="#launch">Launch</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-standalone align-left">
+      <div class="hero-copy">
+        <span class="section-label">001 / Reveal</span>
+        <h1 class="hero-heading">
+          <span>Video</span>
+          <span>meets</span>
+          <span>website</span>
+        </h1>
+        <p class="hero-tagline">A premium scroll experience powered by extracted video frames and layered motion.</p>
+      </div>
+      <div class="hero-footnote">Scroll to reveal the motion canvas</div>
+    </section>
+
+    <div class="canvas-wrap">
+      <canvas id="canvas" aria-hidden="true"></canvas>
+      <div id="dark-overlay" class="dark-overlay"></div>
+      <div class="marquee-wrap">
+        <div class="marquee-text">FRAME MOTION • SCROLL STORY • VIDEO FUSION •</div>
+      </div>
+    </div>
+
+    <section id="scroll-container" class="scroll-container">
+      <section class="scroll-section section-content align-right" data-animation="slide-left">
+        <div class="section-inner">
+          <span class="section-label">002 / Motion</span>
+          <h2 class="section-heading">Smooth frame storytelling</h2>
+          <p class="section-body">Every scroll step advances the animation: from hero frame reveal to a rich motion narrative layered with typographic energy.</p>
+        </div>
+      </section>
+
+      <section class="scroll-section section-content align-left" data-animation="slide-right">
+        <div class="section-inner">
+          <span class="section-label">003 / Choreography</span>
+          <h2 class="section-heading">Balanced animation variety</h2>
+          <p class="section-body">Staggered labels, headings, body text, and a persistent CTA create a premium impression without repeating the same effect.</p>
+        </div>
+      </section>
+
+      <section id="stats" class="scroll-section section-stats" data-animation="stagger-up">
+        <div class="stats-overlay"></div>
+        <div class="section-inner stats-grid">
+          <div class="stat-card">
+            <span class="stat-number" data-value="24">0</span>
+            <span class="stat-suffix">fps</span>
+            <span class="stat-label">Frame cadence</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-value="180">0</span>
+            <span class="stat-suffix">frames</span>
+            <span class="stat-label">Sequence length</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-value="100">0</span>
+            <span class="stat-suffix">%</span>
+            <span class="stat-label">Scroll driven</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="launch" class="scroll-section section-cta align-right" data-persist="true" data-animation="scale-up">
+        <div class="section-inner">
+          <span class="section-label">004 / Launch</span>
+          <h2 class="section-heading">Turn your video into a living website</h2>
+          <p class="section-body">Add your frames to <code>frames/frame_0001.webp</code> and let the page transform motion into an immersive scroll journey.</p>
+          <a class="cta-button" href="#">Start the build</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.5/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
