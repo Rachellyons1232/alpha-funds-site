@@ -1,28 +1,12 @@
-# macOS
+# macOS metadata
 .DS_Store
+**/.DS_Store
 
-# Local Claude config
+# Local Claude Code config (per-machine, not part of the site)
 .claude/
 
-# Large binaries / tools (not source)
+# Tool binary — not site content, can be re-downloaded if needed
 ffmpeg
 
-# Build artifacts / deploy bundles (regenerated, no need in git)
-alpha-funds-deploy/
-alpha-funds-deploy.zip
-export/
-
-# Video files (not referenced by the site)
-*.mp4
-video/
-
-# Frame sequences not used by the site
-frames-cosmic/
-
-# Unused / source PNGs (kept locally, not pushed)
-sophia space image.png
-sophia-space-duotone.png
-Screen Shot*.png
-
-# Private brand documents
-*.pdf
+# Zip archives that just duplicate tracked folders
+*.zip
