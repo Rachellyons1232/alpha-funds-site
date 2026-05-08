@@ -880,16 +880,19 @@
     padding: clamp(140px, 18vh, 220px) 60px;
     position: relative;
     overflow: visible;
-    /* Fade the section's own bottom edge into transparency so the
-       footer's graphite shows through gradually. No overlay, no
-       gradient layer — the section literally dissolves into the
-       footer over its last 240px (120px on small screens).        */
+    /* Fade the section's own top and bottom edges into transparency
+       so the surrounding sections show through gradually. No overlay,
+       no gradient layer — the section literally dissolves at both
+       ends. Top fade is shorter (sits within the section's top
+       padding) so the headline stays fully visible.                */
     -webkit-mask-image: linear-gradient(to bottom,
-      black 0%,
+      transparent 0%,
+      black 140px,
       black calc(100% - 240px),
       transparent 100%);
     mask-image: linear-gradient(to bottom,
-      black 0%,
+      transparent 0%,
+      black 140px,
       black calc(100% - 240px),
       transparent 100%);
   }
@@ -1236,11 +1239,13 @@
     .contact {
       padding: 110px 28px;
       -webkit-mask-image: linear-gradient(to bottom,
-        black 0%,
+        transparent 0%,
+        black 100px,
         black calc(100% - 140px),
         transparent 100%);
       mask-image: linear-gradient(to bottom,
-        black 0%,
+        transparent 0%,
+        black 100px,
         black calc(100% - 140px),
         transparent 100%);
     }
