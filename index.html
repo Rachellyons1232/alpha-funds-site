@@ -1815,6 +1815,14 @@
       if (e.key === 'Escape' && nav.classList.contains('open')) setOpen(false);
     });
 
+    // Tap outside the drawer (or on the toggle) closes the menu.
+    document.addEventListener('click', function(e) {
+      if (!nav.classList.contains('open')) return;
+      if (toggle.contains(e.target)) return;
+      if (links.contains(e.target)) return;
+      setOpen(false);
+    });
+
     window.addEventListener('resize', function() {
       if (window.innerWidth > 960 && nav.classList.contains('open')) setOpen(false);
     });
