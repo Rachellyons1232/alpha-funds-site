@@ -141,6 +141,42 @@
     outline-offset: 4px;
     color: var(--signal);
   }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 9px;
+    background: transparent;
+    border: 1px solid var(--s-25);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .nav-toggle:hover { border-color: var(--signal); }
+  .nav-toggle:focus-visible {
+    outline: 1px solid var(--signal);
+    outline-offset: 3px;
+  }
+  .nav-toggle-bar {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: var(--stellar);
+    transform-origin: center;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
 
   /* ─────────────────────────────────────────────── */
   /* HERO — sticky-pin scroll-driven canvas           */
@@ -935,6 +971,7 @@
     max-width: 48ch;
   }
   .subscribe-form {
+    position: relative;
     display: flex;
     gap: 12px;
     max-width: 520px;
@@ -962,6 +999,20 @@
     background: var(--deep-space);
   }
   .subscribe-form .cta { white-space: nowrap; }
+  .subscribe-status {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 8px 0 0;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--s-65);
+  }
+  .subscribe-status.is-error { color: var(--ignition); }
+  .subscribe-status.is-success { color: var(--signal); }
   .visually-hidden {
     position: absolute;
     width: 1px;
@@ -1123,8 +1174,37 @@
   /* ─────────────────────────────────────────────── */
   @media (max-width: 960px) {
     .nav { padding: 18px 28px; }
-    .nav-links { gap: 18px; }
-    .nav-links a:nth-child(n+4) { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      padding: 88px 28px 32px;
+      background: rgba(10, 20, 32, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--s-12);
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.25s ease;
+      z-index: 90;
+    }
+    .nav-links a {
+      display: block;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--s-12);
+      font-size: 13px;
+    }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav.open .nav-links {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
     .hero-pin { padding: 40px 28px clamp(70px, 12vh, 110px); }
     .hero-progress { left: 28px; right: 28px; }
     .section { padding: 90px 28px; }
@@ -1141,8 +1221,10 @@
     .invest-figure { position: static; top: auto; max-width: 640px; }
   }
   @media (max-width: 560px) {
-    .nav-links a:nth-child(n+3) { display: none; }
-    .nav-tagline { display: none; }
+    .nav-tagline {
+      font-size: 9px;
+      letter-spacing: 0.02em;
+    }
     .team-card { grid-template-columns: 1fr; gap: 18px; }
     .team-photo { max-width: 240px; }
     .subscribe-form { flex-direction: column; gap: 10px; }
@@ -1182,7 +1264,17 @@
     <span class="nav-wordmark">ALPHA FUNDS</span>
     <span class="nav-tagline">Space and Deep Tech Venture Capital</span>
   </a>
-  <div class="nav-links">
+  <button class="nav-toggle"
+          id="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="nav-links">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <div class="nav-links" id="nav-links">
     <a href="#why">Why</a>
     <a href="#approach">Approach</a>
     <a href="#portfolio">Portfolio</a>
@@ -1437,31 +1529,37 @@
     <div class="foot-subscribe-text">
       <span class="section-eyebrow reveal">// Stay in orbit</span>
       <p class="foot-subscribe-lede reveal delay-1">
-        Occasional updates from Alpha Funds &mdash; what we're seeing in space and deep tech.
+        Occasional updates from Alpha Funds on what we're seeing in space and deep tech.
       </p>
     </div>
-    <!-- TODO: wire to email provider -->
-    <form class="subscribe-form reveal delay-2" onsubmit="event.preventDefault();" novalidate>
+    <!-- Posts into a hidden iframe so the page doesn't navigate away. Responses land in the linked Google Sheet. -->
+    <form class="subscribe-form reveal delay-2"
+          id="subscribe-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSckbdRnAv4thpg5z6KRjy----LvY6R0SORV2rbYbOUuB31vIw/formResponse"
+          method="POST"
+          target="gform-sink"
+          novalidate>
       <label class="visually-hidden" for="subscribe-email">Email address</label>
-      <input id="subscribe-email" type="email" name="email" placeholder="you@domain.com"
+      <input id="subscribe-email" type="email" name="entry.778062954" placeholder="you@domain.com"
              autocomplete="email" required>
-      <button type="button" class="cta cta-primary">Subscribe</button>
+      <button type="submit" class="cta cta-primary">Subscribe</button>
+      <p class="subscribe-status" id="subscribe-status" role="status" aria-live="polite"></p>
     </form>
+    <iframe name="gform-sink" style="display:none" aria-hidden="true" tabindex="-1"></iframe>
   </div>
 
   <div class="foot-disclaimer">
-    <span class="flag">// Disclaimer &mdash; placeholder, pending legal review.</span>
-    The information on this site is provided for general informational purposes only and does not
-    constitute an offer to sell or a solicitation of an offer to buy any securities. Any such offering
-    will be made only to qualified investors pursuant to definitive offering documents and in
-    accordance with applicable securities laws, including Rule 506(b) of Regulation D under the
-    Securities Act of 1933. Past performance is not indicative of future results.
+    <span class="flag">// DISCLAIMER</span>
+    THE INFORMATION ON THIS SITE IS PROVIDED FOR GENERAL INFORMATIONAL PURPOSES ONLY AND DOES NOT
+    CONSTITUTE AN OFFER TO SELL OR A SOLICITATION OF AN OFFER TO BUY ANY SECURITIES. ANY SUCH
+    OFFERING WILL BE MADE ONLY TO QUALIFIED INVESTORS PURSUANT TO DEFINITIVE OFFERING DOCUMENTS
+    AND IN ACCORDANCE WITH APPLICABLE SECURITIES LAWS, INCLUDING RULE 506(B) OF REGULATION D
+    UNDER THE SECURITIES ACT OF 1933.
   </div>
 
   <div class="foot-bottom">
     <span class="foot-mark">ALPHA FUNDS</span>
     <span class="foot-clock">// <span data-clock>2026.05.05 23:47:12 UTC</span></span>
-    <span>// V.02 &middot; 2026.05</span>
     <span>// Designed in-house</span>
     <span class="foot-social">
       <a href="https://www.linkedin.com/company/alphafunds" target="_blank" rel="noopener noreferrer" aria-label="Alpha Funds on LinkedIn">
@@ -1692,6 +1790,36 @@
     heroObs.observe(hero);
   })();
 
+  // Mobile hamburger: toggle drawer, close on link/Escape/desktop-resize.
+  (function() {
+    var nav = document.getElementById('nav');
+    var toggle = document.getElementById('nav-toggle');
+    var links = document.getElementById('nav-links');
+    if (!nav || !toggle || !links) return;
+
+    function setOpen(open) {
+      nav.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    toggle.addEventListener('click', function() {
+      setOpen(!nav.classList.contains('open'));
+    });
+
+    links.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') setOpen(false);
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) setOpen(false);
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 960 && nav.classList.contains('open')) setOpen(false);
+    });
+  })();
+
   // Section-enter reveal: vanilla IntersectionObserver toggling .in.
   (function() {
     var els = document.querySelectorAll('.reveal');
@@ -1791,6 +1919,37 @@
         unitEl.textContent = '';
       }
     }
+  })();
+
+  // Subscribe form: validate, then post into hidden iframe (Google Forms target).
+  (function() {
+    var form = document.getElementById('subscribe-form');
+    var input = document.getElementById('subscribe-email');
+    var status = document.getElementById('subscribe-status');
+    if (!form || !input || !status) return;
+
+    function setStatus(msg, kind) {
+      status.textContent = msg;
+      status.classList.remove('is-error', 'is-success');
+      if (kind) status.classList.add('is-' + kind);
+    }
+
+    form.addEventListener('submit', function(e) {
+      var value = input.value.trim();
+      if (!value || !input.checkValidity()) {
+        e.preventDefault();
+        setStatus('Please enter a valid email.', 'error');
+        input.focus();
+        return;
+      }
+      // Don't block — the form posts into the hidden iframe.
+      setStatus('You’re on the list.', 'success');
+      window.setTimeout(function() { form.reset(); }, 50);
+    });
+
+    input.addEventListener('input', function() {
+      if (status.textContent) setStatus('', null);
+    });
   })();
 
 </script>
