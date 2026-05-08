@@ -1033,6 +1033,27 @@
     position: relative;
     overflow: hidden;
   }
+  /* Horizon transition into the subscribe band: a hairline accent + soft
+     halo above it, echoing the contact section's radial glow so the join
+     reads as one atmosphere instead of an unmarked cutoff.              */
+  footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
+    background:
+      linear-gradient(to right,
+        transparent 0%,
+        rgba(192, 139, 63, 0.28) 50%,
+        transparent 100%) top center / 90% 1px no-repeat,
+      radial-gradient(ellipse 60% 100% at 50% 0%,
+        rgba(192, 139, 63, 0.06) 0%,
+        transparent 65%);
+    pointer-events: none;
+    z-index: 1;
+  }
   .footer-stars {
     position: absolute;
     inset: 0;
