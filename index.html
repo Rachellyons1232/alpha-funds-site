@@ -1028,31 +1028,10 @@
   /* FOOTER                                           */
   /* ─────────────────────────────────────────────── */
   footer {
-    background: var(--deep-space);
-    padding: 80px 60px 40px;
+    background: var(--graphite);
+    padding: 140px 60px 40px;
     position: relative;
     overflow: hidden;
-  }
-  /* Horizon transition into the subscribe band: a hairline accent + soft
-     halo above it, echoing the contact section's radial glow so the join
-     reads as one atmosphere instead of an unmarked cutoff.              */
-  footer::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 220px;
-    background:
-      linear-gradient(to right,
-        transparent 0%,
-        rgba(192, 139, 63, 0.28) 50%,
-        transparent 100%) top center / 90% 1px no-repeat,
-      radial-gradient(ellipse 60% 100% at 50% 0%,
-        rgba(192, 139, 63, 0.06) 0%,
-        transparent 65%);
-    pointer-events: none;
-    z-index: 1;
   }
   .footer-stars {
     position: absolute;
@@ -1235,7 +1214,7 @@
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
     .stat-callout { padding: 26px 24px; }
     .contact { padding: 110px 28px; }
-    footer { padding: 60px 28px 28px; }
+    footer { padding: 110px 28px 28px; }
     .foot-subscribe { grid-template-columns: 1fr; gap: 24px; }
     .our-why-grid { grid-template-columns: 1fr; gap: 40px; }
     .invest-grid { grid-template-columns: 1fr; gap: 40px; }
