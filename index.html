@@ -880,6 +880,18 @@
     padding: clamp(140px, 18vh, 220px) 60px;
     position: relative;
     overflow: visible;
+    /* Fade the section's own bottom edge into transparency so the
+       footer's graphite shows through gradually. No overlay, no
+       gradient layer — the section literally dissolves into the
+       footer over its last 240px (120px on small screens).        */
+    -webkit-mask-image: linear-gradient(to bottom,
+      black 0%,
+      black calc(100% - 240px),
+      transparent 100%);
+    mask-image: linear-gradient(to bottom,
+      black 0%,
+      black calc(100% - 240px),
+      transparent 100%);
   }
   .contact::before {
     content: "";
@@ -1036,12 +1048,8 @@
   /* FOOTER                                           */
   /* ─────────────────────────────────────────────── */
   footer {
-    background-color: var(--graphite);
-    background-image: linear-gradient(to bottom,
-      var(--deep-space) 0px,
-      var(--graphite) 240px);
-    background-repeat: no-repeat;
-    padding: 220px 60px 40px;
+    background: var(--graphite);
+    padding: 80px 60px 40px;
     position: relative;
     overflow: hidden;
   }
@@ -1225,8 +1233,18 @@
     .team-card { grid-template-columns: 160px 1fr; gap: 24px; }
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
     .stat-callout { padding: 26px 24px; }
-    .contact { padding: 110px 28px; }
-    footer { padding: 180px 28px 28px; }
+    .contact {
+      padding: 110px 28px;
+      -webkit-mask-image: linear-gradient(to bottom,
+        black 0%,
+        black calc(100% - 140px),
+        transparent 100%);
+      mask-image: linear-gradient(to bottom,
+        black 0%,
+        black calc(100% - 140px),
+        transparent 100%);
+    }
+    footer { padding: 60px 28px 28px; }
     .foot-subscribe { grid-template-columns: 1fr; gap: 24px; }
     .our-why-grid { grid-template-columns: 1fr; gap: 40px; }
     .invest-grid { grid-template-columns: 1fr; gap: 40px; }
