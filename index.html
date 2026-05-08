@@ -345,6 +345,20 @@
   .portfolio       { --section-bg: var(--graphite);    }
   .team            { --section-bg: var(--deep-space); }
   .contact         { --section-bg: var(--deep-space); }
+  /* Contact bleeds further into the graphite footer so the deep-space →
+     graphite handoff has no perceptible edge — the longer gradient
+     spreads the falloff across enough vertical space that the eye
+     can't pinpoint where one section ends and the next begins.        */
+  .contact::after {
+    bottom: -240px;
+    height: 240px;
+    background: linear-gradient(to bottom,
+      var(--deep-space) 0%,
+      rgba(10, 20, 32, 0.85) 35%,
+      rgba(10, 20, 32, 0.45) 65%,
+      rgba(10, 20, 32, 0.15) 85%,
+      transparent 100%);
+  }
   .section-inner {
     max-width: 1400px;
     margin: 0 auto;
@@ -1029,7 +1043,7 @@
   /* ─────────────────────────────────────────────── */
   footer {
     background: var(--graphite);
-    padding: 140px 60px 40px;
+    padding: 220px 60px 40px;
     position: relative;
     overflow: hidden;
   }
@@ -1214,7 +1228,7 @@
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
     .stat-callout { padding: 26px 24px; }
     .contact { padding: 110px 28px; }
-    footer { padding: 110px 28px 28px; }
+    footer { padding: 180px 28px 28px; }
     .foot-subscribe { grid-template-columns: 1fr; gap: 24px; }
     .our-why-grid { grid-template-columns: 1fr; gap: 40px; }
     .invest-grid { grid-template-columns: 1fr; gap: 40px; }
